@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import Counter1 from "./components/Counter1";
+import Counter2 from "./components/Counter2";
+import Counter3 from "./components/Counter3";
 
 function App() {
+  const [addCounter, setAddCounter] = useState(0);
+ 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Counter1/>
+ 
+      <button 
+
+      disabled={addCounter === 3 ? true : false}
+
+      onClick={() => {
+        setAddCounter(addCounter + 1)
+    
+        if (setAddCounter === 1) {
+          <Counter2/>
+          }
+        if(setAddCounter === 2) {
+          <Counter3/>
+          }
+        }
+
+      }>Add Counter</button>
     </div>
   );
-}
+};
 
 export default App;
